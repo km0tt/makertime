@@ -1,0 +1,139 @@
+:root{
+    --primary-100:#C9ADA7;
+    --primary-200:#ab908b;
+    --primary-300:#69514c;
+    --accent-100:#F2CCB8;
+    --accent-200:#8e6d5b;
+    --text-100:#FFFFFF;
+    --text-200:#c4c3c3;
+    --bg-100:#44496b;
+    --bg-200:#555a7d;
+    --bg-300:#707499;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-100);
+    color: var(--text-100);
+    font-family: Arial,sanc-serif;
+    font-size: 16px;
+}
+
+header{
+    background-color: var(--bg-200);
+    padding: 24px;
+    text-align: center;
+    border-bottom: 3px solid var(--accent-100);
+}
+
+header h1 {
+    font-size: 32px;
+    color: var(--accent-100);
+}
+
+header p {
+    color: var(--text-200);
+    font-size: 14px;
+}
+
+main {
+    max-width: 680px;
+    margin: 32px auto;
+    padding: 0 20px;
+}
+
+#categoryChips{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.chip{
+    background: var(--bg-200);
+    border: 1px soild var(--bg-300);
+    color: var(--text-200);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.chip.active{
+    background: var(--accent-100);
+    border-color: var(--accent-100);
+    color: var(--bg-100);
+    font-weight: bold;
+}
+
+#jokeCard {
+    background: var(--bg-200);
+    border: 1px solid var(--bg-300);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+    min-height: 120px;
+}
+
+#categorybadge{
+    background: var(--bg-300);
+    color: var(--accent-100);
+    font-size: 11px;
+    padding: 3px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+#FetchBTn {
+    background: var(--accent-100);
+    color: var(--bg-100);
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#saveBtn {
+  background: transparent;
+  border: 1px solid var(--bg-300);
+  color: var(--text-100);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+#savedSection {
+  margin-top: 32px;
+  border-top: 1px solid var(--bg-300);
+  padding-top: 24px;
+}
+
+.saved-item {
+  background: var(--bg-200);
+  border: 1px solid var(--bg-300);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-200);
+  font-size: 13px;
+  border-top: 1px solid var(--bg-300);
+}
+
+footer a {
+  color: var(--accent-100);
+  text-decoration: none;
+}
