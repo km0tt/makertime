@@ -4,98 +4,64 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JokeZone 😂</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,500;1,300&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="noise"></div>
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
 
   <header>
-    <div class="logo">JOKE<span>ZONE</span></div>
-    <p class="tagline">Гуморна станція · Powered by JokeAPI</p>
+    <h1>😂 JokeZone</h1>
+    <p>Jokes generator · Powered by JokeAPI</p>
   </header>
 
   <main>
-    <!-- FILTERS -->
+
+  
     <section class="filters">
-      <div class="filter-group">
-        <label>КАТЕГОРІЯ</label>
-        <div class="chip-row" id="categoryChips">
-          <button class="chip active" data-value="Any">Будь-яка</button>
-          <button class="chip" data-value="Programming">💻 Прог.</button>
-          <button class="chip" data-value="Misc">🎲 Різне</button>
-          <button class="chip" data-value="Dark">🖤 Темні</button>
-          <button class="chip" data-value="Pun">🥁 Каламбур</button>
-          <button class="chip" data-value="Spooky">👻 Жах</button>
-          <button class="chip" data-value="Christmas">🎄 Різдво</button>
-        </div>
-      </div>
-
-      <div class="filter-group">
-        <label>ТИП</label>
-        <div class="chip-row" id="typeChips">
-          <button class="chip active" data-value="any">Будь-який</button>
-          <button class="chip" data-value="single">Одна частина</button>
-          <button class="chip" data-value="twopart">Запитання / відповідь</button>
-        </div>
-      </div>
-
-      <div class="filter-group">
-        <label>МОВА</label>
-        <div class="chip-row" id="langChips">
-          <button class="chip active" data-value="en">🇬🇧 English</button>
-          <button class="chip" data-value="de">🇩🇪 Deutsch</button>
-          <button class="chip" data-value="fr">🇫🇷 Français</button>
-          <button class="chip" data-value="cs">🇨🇿 Česky</button>
-          <button class="chip" data-value="pt">🇧🇷 Português</button>
-        </div>
+      <p class="section-title">Категорія</p>
+      <div class="chip-row" id="categoryChips">
+        <button class="chip active" data-value="Any">Будь-яка</button>
+        <button class="chip" data-value="Programming">💻 Програмування</button>
+        <button class="chip" data-value="Misc">🎲 Різне</button>
       </div>
     </section>
 
-    <!-- JOKE CARD -->
-    <section class="card-wrap">
-      <div class="card" id="jokeCard">
-        <div class="card-inner">
-          <span class="category-badge" id="categoryBadge">—</span>
+   
+    <div class="card" id="jokeCard">
+      <span class="category-badge" id="categoryBadge">—</span>
 
-          <div class="joke-body" id="jokeBody">
-            <p class="hint">Натисни кнопку та отримай жарт 😄</p>
-          </div>
-
-          <div class="card-footer">
-            <span class="joke-id" id="jokeId"></span>
-            <button class="copy-btn" id="copyBtn" title="Скопіювати">📋</button>
-          </div>
-        </div>
+      <div class="joke-body" id="jokeBody">
+        <p class="hint">Натисни кнопку та отримай жарт 😄</p>
       </div>
 
-      <div class="loading" id="loading">
-        <div class="spinner"></div>
-        <span>Шукаємо найсмішніше…</span>
+      <div class="card-footer">
+        <span class="joke-id" id="jokeId"></span>
+        <button class="copy-btn" id="copyBtn" title="Скопіювати">📋</button>
       </div>
-    </section>
-
-    <!-- ACTIONS -->
-    <div class="actions">
-      <button class="btn-main" id="fetchBtn">
-        <span>ОТРИМАТИ ЖАРТ</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </button>
-      <button class="btn-secondary" id="saveBtn" title="Зберегти жарт">⭐ Зберегти</button>
     </div>
 
-    <!-- SAVED -->
+  
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <span>Шукаємо найсмішніше…</span>
+    </div>
+
+  
+    <div class="actions">
+      <button class="btn-main" id="fetchBtn">▶ Отримати жарт</button>
+      <button class="btn-secondary" id="saveBtn">⭐ Зберегти</button>
+    </div>
+
+  
     <section class="saved-section" id="savedSection" style="display:none">
-      <h2>ЗБЕРЕЖЕНІ ЖАРТИ <span id="savedCount">0</span></h2>
+      <h2>Збережені жарти <span id="savedCount">0</span></h2>
       <div class="saved-list" id="savedList"></div>
-      <button class="btn-clear" id="clearBtn">Очистити все</button>
+      <button class="btn-clear" id="clearBtn">🗑 Очистити все</button>
     </section>
+
   </main>
 
   <footer>
-    <span>Дані з <a href="https://v2.jokeapi.dev" target="_blank">JokeAPI</a></span>
+    Дані з <a href="https://v2.jokeapi.dev" target="_blank">JokeAPI</a>
   </footer>
 
   <div class="toast" id="toast"></div>
