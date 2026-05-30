@@ -17,11 +17,12 @@
 
   
     <section class="filters">
-      <p class="section-title">Категорія</p>
+      <p class="section-title">Categories</p>
       <div class="chip-row" id="categoryChips">
-        <button class="chip active" data-value="Any">Будь-яка</button>
-        <button class="chip" data-value="Programming">💻 Програмування</button>
-        <button class="chip" data-value="Misc">🎲 Різне</button>
+        <button class="chip active" data-value="Any">Any</button>
+        <button class="chip" data-value="Programming">💻 Programming</button>
+        <button class="chip" data-value="Mics">🎲 Mics</button>
+        <button class="chip" data-value="Spooky">👻 Spooky</button>
       </div>
     </section>
 
@@ -30,32 +31,32 @@
       <span class="category-badge" id="categoryBadge">—</span>
 
       <div class="joke-body" id="jokeBody">
-        <p class="hint">Натисни кнопку та отримай жарт 😄</p>
+        <p class="hint">Push a button and get jokes 😄</p>
       </div>
 
       <div class="card-footer">
         <span class="joke-id" id="jokeId"></span>
-        <button class="copy-btn" id="copyBtn" title="Скопіювати">📋</button>
+        <button class="copy-btn" id="copyBtn" title="Copy">📋</button>
       </div>
     </div>
 
   
     <div class="loading" id="loading">
       <div class="spinner"></div>
-      <span>Шукаємо найсмішніше…</span>
+      <span>Looking for the funniest...</span>
     </div>
 
   
     <div class="actions">
-      <button class="btn-main" id="fetchBtn">▶ Отримати жарт</button>
-      <button class="btn-secondary" id="saveBtn">⭐ Зберегти</button>
+      <button class="btn-main" id="fetchBtn">▶ Get a joke</button>
+      <button class="btn-secondary" id="saveBtn">⭐ Save</button>
     </div>
 
   
     <section class="saved-section" id="savedSection" style="display:none">
-      <h2>Збережені жарти <span id="savedCount">0</span></h2>
+      <h2>Saved jokes <span id="savedCount">0</span></h2>
       <div class="saved-list" id="savedList"></div>
-      <button class="btn-clear" id="clearBtn">🗑 Очистити все</button>
+      <button class="btn-clear" id="clearBtn">🗑 Clear everything</button>
     </section>
 
   </main>
