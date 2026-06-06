@@ -30,7 +30,7 @@ async function fetchJoke() {
   const data = await res.json()
 
   if (data.error) {
-    jokeBody.innerHTML = `<p>Жарт не знайдено </p>`
+    jokeBody.innerHTML = `<p>Not Found </p>`
     return
   }
 
@@ -52,13 +52,13 @@ function renderJoke(joke) {
 }
 
 saveBtn.addEventListener('click', () => {
-  if (!state.currentJoke) { showToast('Спочатку отримай жарт!'); return }
-  if (state.saved.some(j => j.id === state.currentJoke.id)) { showToast('Вже збережено '); return }
+  if (!state.currentJoke) { showToast('Firstly get a joke!'); return }
+  if (state.saved.some(j => j.id === state.currentJoke.id)) { showToast('Already saved'); return }
 
   state.saved.unshift(state.currentJoke)
   localStorage.setItem('jokezonesSaved', JSON.stringify(state.saved))
   renderSavedList()
-  showToast('Збережено! ')
+  showToast('Saved!')
 })
 
 copyBtn.addEventListener('click', () => {
@@ -67,7 +67,7 @@ copyBtn.addEventListener('click', () => {
     ? `${state.currentJoke.setup}\n${state.currentJoke.delivery}`
     : state.currentJoke.joke
   navigator.clipboard.writeText(text)
-  showToast('Скопійовано! ')
+  showToast('Copied!')
 })
 
 function renderSavedList() {
@@ -89,7 +89,7 @@ function renderSavedList() {
       state.saved.splice(+btn.dataset.index, 1)
       localStorage.setItem('jokezonesSaved', JSON.stringify(state.saved))
       renderSavedList()
-      showToast('Видалено')
+      showToast('Deleted')
     })
   })
 }
@@ -98,7 +98,7 @@ clearBtn.addEventListener('click', () => {
   state.saved = []
   localStorage.setItem('jokezonesSaved', JSON.stringify(state.saved))
   renderSavedList()
-  showToast('Список очищено')
+  showToast('List cleared')
 })
 
 fetchBtn.addEventListener('click', fetchJoke)
