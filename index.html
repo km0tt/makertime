@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JokeZone 😂</title>
+  <title>JokeZone </title>
   <link rel="stylesheet" href="style.css"/>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
 
   <header>
-    <h1>😂 JokeZone</h1>
+    <h1> JokeZone</h1>
     <p>Jokes generator · Powered by JokeAPI</p>
   </header>
 
@@ -21,7 +21,6 @@
       <div class="chip-row" id="categoryChips">
         <button class="chip active" data-value="Any">Any</button>
         <button class="chip" data-value="Programming">💻 Programming</button>
-        <button class="chip" data-value="Mics">🎲 Mics</button>
         <button class="chip" data-value="Spooky">👻 Spooky</button>
       </div>
     </section>
@@ -31,7 +30,7 @@
       <span class="category-badge" id="categoryBadge">—</span>
 
       <div class="joke-body" id="jokeBody">
-        <p class="hint">Push a button and get jokes 😄</p>
+        <p class="hint">Push a button and get jokes </p>
       </div>
 
       <div class="card-footer">
@@ -49,14 +48,14 @@
   
     <div class="actions">
       <button class="btn-main" id="fetchBtn">▶ Get a joke</button>
-      <button class="btn-secondary" id="saveBtn">⭐ Save</button>
+      <button class="btn-secondary" id="saveBtn"> Save</button>
     </div>
 
   
     <section class="saved-section" id="savedSection" style="display:none">
       <h2>Saved jokes <span id="savedCount">0</span></h2>
       <div class="saved-list" id="savedList"></div>
-      <button class="btn-clear" id="clearBtn">🗑 Clear everything</button>
+      <button class="btn-clear" id="clearBtn"> Clear everything</button>
     </section>
 
   </main>
