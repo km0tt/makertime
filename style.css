@@ -90,7 +90,7 @@ main {
     margin-bottom: 16px;
 }
 
-#FetchBTn {
+#fetchBtn {
     background: var(--accent-100);
     color: var(--bg-100);
     border: none;
