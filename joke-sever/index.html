@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JokeZone </title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <h1> JokeZone</h1>
+    <p>Jokes generator · Powered by JokeAPI</p>
+  </header>
+
+  <main>
+
+    <section class="filters">
+      <p class="section-title">Categories</p>
+      <div class="chip-row" id="categoryChips">
+        <button class="chip active" data-value="Any">Any</button>
+        <button class="chip" data-value="Programming">💻 Programming</button>
+        <button class="chip" data-value="Spooky">👻 Spooky</button>
+      </div>
+    </section>
+
+   
+    <div class="card" id="jokeCard">
+      <span class="category-badge" id="categoryBadge">—</span>
+
+      <div class="joke-body" id="jokeBody">
+        <p class="hint">Push a button and get jokes </p>
+      </div>
+
+      <div class="card-footer">
+        <span class="joke-id" id="jokeId"></span>
+        <button class="copy-btn" id="copyBtn" title="Copy">📋</button>
+      </div>
+    </div>
+
+  
+    
+
+  
+    <div class="actions">
+      <button class="btn-main" id="fetchBtn">▶ Get a joke</button>
+      <button class="btn-secondary" id="saveBtn"> Save</button>
+    </div>
+
+  
+    <section class="saved-section" id="savedSection" style="display:none">
+      <h2>Saved jokes <span id="savedCount">0</span></h2>
+      <div class="saved-list" id="savedList"></div>
+      <button class="btn-clear" id="clearBtn"> Clear everything</button>
+    </section>
+
+  </main>
+
+  <footer>
+    Дані з <a href="https://v2.jokeapi.dev" target="_blank">JokeAPI</a>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
