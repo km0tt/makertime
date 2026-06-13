@@ -55,6 +55,29 @@
       <button class="btn-clear" id="clearBtn"> Clear everything</button>
     </section>
 
+    <div id="authSection">
+
+  <div id="loginForm">
+    <h2>Вхід</h2>
+    <input type="text" id="loginUsername" placeholder="Логін"/>
+    <input type="password" id="loginPassword" placeholder="Пароль"/>
+    <button id="loginBtn">Увійти</button>
+    <p>Немає акаунту? <span id="goRegister">Зареєструватись</span></p>
+  </div>
+
+  <div id="registerForm" style="display:none">
+    <h2>Реєстрація</h2>
+    <input type="text" id="regUsername" placeholder="Логін"/>
+    <input type="password" id="regPassword" placeholder="Пароль"/>
+    <button id="registerBtn">Зареєструватись</button>
+    <p>Вже є акаунт? <span id="goLogin">Увійти</span></p>
+  </div>
+
+</div>
+
+<!-- ГОЛОВНА ЧАСТИНА (після логіну) -->
+<div id="mainSection" style="display:none"></div>
+
   </main>
 
   <footer>
@@ -63,6 +86,6 @@
 
   <div class="toast" id="toast"></div>
 
-  <script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

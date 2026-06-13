@@ -15,6 +15,14 @@ const savedSection = document.getElementById('savedSection')
 const savedList = document.getElementById('savedList')
 const savedCount = document.getElementById('savedCount')
 const toast = document.getElementById('toast')
+const authSection = document.getElementById('authSection')
+const mainSection = document.getElementById('mainSection')
+const loginForm = document.getElementById('loginForm')
+const registerForm = document.getElementById('registerForm')
+const loginBtn = document.getElementById('loginBtn')
+const registerBtn = document.getElementById('registerBtn')
+const goRegister = document.getElementById('goRegister')
+const goLogin = document.getElementById('goLogin')
 
 document.getElementById('categoryChips').querySelectorAll('.chip').forEach(chip => {
   chip.addEventListener('click', () => {
@@ -51,15 +59,52 @@ function renderJoke(joke) {
   }
 }
 
-saveBtn.addEventListener('click', () => {
-  if (!state.currentJoke) { showToast('Firstly get a joke!'); return }
-  if (state.saved.some(j => j.id === state.currentJoke.id)) { showToast('Already saved'); return }
+saveBtn.addEventListener('click', async () => {
+  if (!state.currentJoke) { showToast('At first, get a joke'); return }
 
-  state.saved.unshift(state.currentJoke)
-  localStorage.setItem('jokezonesSaved', JSON.stringify(state.saved))
-  renderSavedList()
-  showToast('Saved!')
+  const res = await fetch('/jokes', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${state.token}`
+    },
+    body: JSON.stringify({
+      joke_id: state.currentJoke.id,
+      joke_text: state.currentJoke.type === 'twopart'
+        ? `${state.currentJoke.setup} — ${state.currentJoke.delivery}`
+        : state.currentJoke.joke,
+      category: state.currentJoke.category
+    })
+  })
+
+  
+  const data = await res.json()
+  
+  if (data.error) {
+    showToast(data.error)
+    return
+  }
+  
+  showToast('Saved')
+  loadSavedJokes()
 })
+async function loadSavedJokes() {
+  const res = await fetch('/jokes', {
+    headers: {
+      'Authorization': `Bearer ${state.token}`
+    }
+  })
+
+  const data = await res.json()
+
+  if (data.error) {
+    showToast(data.error)
+    return
+  }
+
+  state.saved = data.jokes
+  renderSavedList()
+}
 
 copyBtn.addEventListener('click', () => {
   if (!state.currentJoke) return
@@ -79,17 +124,25 @@ function renderSavedList() {
     const item = document.createElement('div')
     item.className = 'saved-item'
     item.innerHTML = `
-      <div>${joke.type === 'twopart' ? joke.setup : joke.joke}</div>
-      <button class="del-btn" data-index="${idx}">✕</button>`
+      <div>${joke.joke_text}</div>
+  <button class="del-btn" data-id="${joke.joke_id}">✕</button>`
     savedList.appendChild(item)
   })
 
   savedList.querySelectorAll('.del-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      state.saved.splice(+btn.dataset.index, 1)
-      localStorage.setItem('jokezonesSaved', JSON.stringify(state.saved))
-      renderSavedList()
-      showToast('Deleted')
+      fetch('/jokes', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${state.token}`
+        },
+        body: JSON.stringify({ joke_id: btn.dataset.id })
+      }).then(() => {
+        loadSavedJokes()
+        showToast('Deleted')
+      })
+
     })
   })
 }
@@ -112,3 +165,70 @@ function showToast(msg) {
 }
 
 renderSavedList()
+
+if (state.token) {
+  loadSavedJokes()
+}
+
+goRegister.addEventListener('click', () => {
+  loginForm.style.display = 'none'
+  registerForm.style.display = 'block'
+})
+
+goLogin.addEventListener('click', () => {
+  registerForm.style.display = 'none'
+  loginForm.style.display = 'block'
+})
+
+registerBtn.addEventListener('click', async () => {
+  const username = document.getElementById('regUsername').value
+  const password = document.getElementById('regPassword').value
+
+  const res = await fetch('/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, password })
+  })
+
+  const data = await res.json()
+
+  if (data.error) {
+    showToast(data.error)
+    return
+  }
+
+  showToast('Реєстрація успішна! Тепер увійди 😊')
+  registerForm.style.display = 'none'
+  loginForm.style.display = 'block'
+})
+
+loginBtn.addEventListener('click', async () => {
+  const username = document.getElementById('loginUsername').value
+  const password = document.getElementById('loginPassword').value
+
+  const res = await fetch('/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, password })
+  })
+
+  const data = await res.json()
+
+  if (data.error) {
+    showToast(data.error)
+    return
+  }
+
+  localStorage.setItem('token', data.token)
+  state.token = data.token
+  authSection.style.display = 'none'
+  mainSection.style.display = 'block'
+  showToast('Ласкаво просимо! 😊')
+})
+
+const token = localStorage.getItem('token')
+if (token) {
+  state.token = token
+  authSection.style.display = 'none'
+  mainSection.style.display = 'block'
+}

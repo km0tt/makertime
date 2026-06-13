@@ -325,3 +325,53 @@ footer a:hover { text-decoration: underline; }
   .card { padding: 20px 18px; }
   .btn-main { font-size: 15px; }
 }
+
+#authSection {
+  max-width: 380px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+#loginForm, #registerForm {
+  background: var(--bg-200);
+  padding: 32px;
+  border-radius: 12px;
+  border: 1px solid var(--bg-300);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#loginForm h2, #registerForm h2 {
+  font-size: 22px;
+  color: var(--accent-100);
+  margin-bottom: 8px;
+}
+
+#loginForm input, #registerForm input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-100);
+  color: var(--text-100);
+  border: 1px solid var(--bg-300);
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+#loginBtn, #registerBtn {
+  width: 100%;
+  background: var(--accent-100);
+  color: var(--bg-100);
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#goRegister, #goLogin {
+  color: var(--accent-100);
+  cursor: pointer;
+  font-size: 14px;
+}
